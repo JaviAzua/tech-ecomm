@@ -1,8 +1,15 @@
 import Head from "next/head";
 import HeroBanner from "../components/HeroBanner";
 import MainHeader from "../components/MainHeader";
+import { client } from "../lib/client";
+import { BannerData, Product } from "../types";
 
-export default function Home() {
+export interface Props {
+  products: Product[] | null;
+  bannerData: BannerData[] | null;
+}
+
+export default function Home({ products, bannerData }: Props) {
   return (
     <div>
       <Head>
@@ -15,8 +22,25 @@ export default function Home() {
       </Head>
       <MainHeader />
       <main>
-        <HeroBanner />
+        <HeroBanner bannerData={bannerData} />
+
+        <div>{products?.map((product) => product.name)}</div>
       </main>
     </div>
   );
 }
+
+export const getServerSideProps = async () => {
+  const query = '*[_type == "product"]';
+  const products = await client.fetch(query);
+
+  const banner_query = '*[_type == "banner"]';
+  const bannerData = await client.fetch(banner_query);
+
+  return {
+    props: {
+      products,
+      bannerData,
+    },
+  };
+};
