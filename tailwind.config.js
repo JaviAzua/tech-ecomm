@@ -10,7 +10,7 @@ module.exports = {
       custom: ["Inter", "sans-serif"],
     },
     colors: {
-      tightRed: "#E26868",
+      tightRed: "#C73434",
       lightRed: "#FF8787",
       scrollbar: "#48dae0",
       darkblack: "#3C4048",

@@ -33,7 +33,7 @@ function HeroBanner({ bannerData }: Props) {
           {bannerData?.smallText.toUpperCase()}
         </h3>
 
-        <button className="text-white cursor-pointer relative  font-semibold py-8 px-20 md:py-10 lg:py-6 md:px-32 lg:px-44 bg-tightRed hover:bg-lightRed hover:text-darkblack duration-700 ">
+        <button className="text-white cursor-pointer relative font-semibold py-8 px-20 md:py-10 lg:py-6 md:px-32 lg:px-44 bg-tightRed hover:bg-lightRed hover:text-darkblack duration-700 ">
           {bannerData?.buttonText}
         </button>
       </div>
