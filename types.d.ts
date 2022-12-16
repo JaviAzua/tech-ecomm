@@ -5,22 +5,11 @@ export interface Product {
   _type: string;
   _updatedAt: Date;
   description: string;
-  image: Image[];
+  image: SanityImageSource[];
   name: string;
   price: number;
   slug: Slug;
   type: string;
-}
-
-export interface Image {
-  _key: string;
-  _type: string;
-  asset: Asset;
-}
-
-export interface Asset {
-  _ref: string;
-  _type: string;
 }
 
 export interface Slug {
@@ -37,19 +26,9 @@ export interface BannerData {
   buttonText: string;
   desc: string;
   discount: string;
-  image: Image;
+  image: SanityImageSource;
   largeText1: string;
   midText: string;
   product: string;
   smallText: string;
-}
-
-export interface Image {
-  _type: string;
-  asset: Asset;
-}
-
-export interface Asset {
-  _ref: string;
-  _type: string;
 }

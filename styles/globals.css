@@ -8,6 +8,9 @@
   * {
     @apply font-custom;
   }
+  body {
+    @apply bg-lightgrey;
+  }
 }
 
 @layer components {

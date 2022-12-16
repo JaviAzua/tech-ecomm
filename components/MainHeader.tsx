@@ -12,7 +12,7 @@ export default function MainHeader() {
   };
 
   return (
-    <nav className="flex select-none items-center justify-evenly sticky py-4 bg-tightRed">
+    <nav className="flex z-50 select-none items-center justify-evenly sticky py-4 bg-tightRed">
       <Link href={"/"}>
         <Image
           className="cursor-pointer resizeMini"
@@ -24,9 +24,9 @@ export default function MainHeader() {
       </Link>
       <button onClick={handleMenu} className="md:hidden">
         {menuOpen ? (
-          <VscChromeClose className="w-12 h-12 md:hidden cursor-pointer" />
+          <VscChromeClose className="w-10 h-10 md:hidden cursor-pointer" />
         ) : (
-          <VscMenu className="w-12 h-12 md:hidden cursor-pointer" />
+          <VscMenu className="w-10 h-10 md:hidden cursor-pointer" />
         )}
       </button>
       <ul

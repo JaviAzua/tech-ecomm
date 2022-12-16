@@ -22,7 +22,7 @@ export default function Home({ products, bannerData }: Props) {
       </Head>
       <MainHeader />
       <main>
-        <HeroBanner bannerData={bannerData} />
+        <HeroBanner bannerData={bannerData![0]} />
 
         <div>{products?.map((product) => product.name)}</div>
       </main>

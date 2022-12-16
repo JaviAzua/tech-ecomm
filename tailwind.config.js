@@ -17,6 +17,7 @@ module.exports = {
       grey: "#D8D9CF",
       lightgrey: "#EDEDED",
       white: "#FFFFFF",
+      black: "#000000",
       stampRed: "#D61C1C;",
     },
   },
