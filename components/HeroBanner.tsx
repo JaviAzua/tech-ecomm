@@ -18,7 +18,7 @@ function HeroBanner({ bannerData }: Props) {
         className="absolute inset-0 rounded-2xl object-cover opacity-60 group-hover:opacity-100 transition-all duration-300"
         fill
       />
-      <h2 className="absolute text-white/20 font-extrabold text-8xl md:text-9xl left-2 md:inset-x-0 md:top-0 lg:text-right ">
+      <h2 className="absolute text-white/20 font-extrabold text-7xl md:text-8xl left-2 md:inset-x-0 md:top-0 lg:text-right ">
         {bannerData?.midText.toUpperCase()}
       </h2>
       <div className=" w-3/4 md:w-full relative h-full"></div>
