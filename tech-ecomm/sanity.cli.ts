@@ -1,6 +1,6 @@
-import {CliConfig, defineCliConfig} from 'sanity/cli'
+import {defineCliConfig} from '@sanity/cli'
 
-export default <CliConfig>defineCliConfig({
+export default defineCliConfig({
   api: {
     projectId: 'eef2fkii',
     dataset: 'production',
