@@ -42,7 +42,7 @@ export default function MainHeader() {
         <li className="navItem">Tablets</li>
       </ul>
       <button className="flex relative group">
-        <IoBagHandleSharp className="group-hover:scale-105 transition-all duration-100 w-14 h-14 bg-white rounded-full" />
+        <IoBagHandleSharp className="group-hover:scale-105 transition-all duration-100 w-10 h-10 bg-white rounded-full" />
         <span className="absolute group-hover:scale-105 transition-all duration-100 bottom-0 right-0 bg-lightRed rounded-full w-6 h-6 flex items-center justify-center">
           2
         </span>
