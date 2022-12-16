@@ -1,9 +1,9 @@
-import {ApiConfig, defineConfig} from 'sanity'
+import {defineConfig} from 'sanity'
 import {deskTool} from 'sanity/desk'
 import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemas'
 
-export default <ApiConfig>defineConfig({
+export default defineConfig({
   name: 'default',
   title: 'tech-ecomm',
 
