@@ -3,6 +3,7 @@ import HeroBanner from "../components/HeroBanner";
 import MainHeader from "../components/MainHeader";
 import { client } from "../lib/client";
 import { BannerData, Product } from "../types";
+import ProductCard from "../components/ProductCard";
 
 export interface Props {
   products: Product[] | null;
@@ -12,20 +13,21 @@ export interface Props {
 export default function Home({ products, bannerData }: Props) {
   return (
     <div>
-      <Head>
-        <title>Tech Ecomm</title>
-        <meta
-          name="tech_ecommerce"
-          content="tech ecommerce made by Javier Azua in NEXTjs with Tailwind, Ts and Sanity"
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <MainHeader />
-      <main>
-        <HeroBanner bannerData={bannerData![0]} />
-
-        <div>{products?.map((product) => product.name)}</div>
-      </main>
+      <HeroBanner bannerData={bannerData![0]} />
+      <section>
+        <div>
+          <h2 className="text-center pt-10 font-bold text-4xl">
+            Latest Products
+          </h2>
+        </div>
+        <div className="flex flex-wrap justify-center gap-6 mt-4 w-full">
+          {products?.slice(0, 10).map((product) => (
+            <div key={product._id}>
+              <ProductCard product={product} />
+            </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }

@@ -12,7 +12,7 @@ export default function MainHeader() {
   };
 
   return (
-    <nav className="flex z-50 select-none items-center justify-evenly sticky py-4 bg-tightRed">
+    <nav className="flex z-50 select-none items-center justify-evenly py-4 bg-tightRed/20">
       <Link href={"/"}>
         <Image
           className="cursor-pointer resizeMini"

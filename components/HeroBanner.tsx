@@ -7,10 +7,10 @@ export interface Props {
 }
 
 function HeroBanner({ bannerData }: Props) {
-  const src = urlFor(bannerData?.image).url();
+  const src = urlFor(bannerData?.image[0]).url();
 
   return (
-    <div className=" select-none relative group rounded-2xl mx-auto w-11/12 h-[50vh] md:h-[40vh] mt-10 shadow-sm shadow-darkblack">
+    <div className="z-[-1] md:z-auto select-none relative group rounded-2xl mx-auto w-11/12 h-[50vh] md:h-[40vh] mt-10 shadow-sm shadow-darkblack">
       <div className="absolute rounded-2xl inset-0 bg-black " />
       <Image
         alt=""
@@ -28,7 +28,7 @@ function HeroBanner({ bannerData }: Props) {
         </p>
         <p className="text-xs text-lightgrey">{bannerData?.desc}</p>
       </div>
-      <div className="absolute left-4 lg:left-32 top-1/3 md:top-1/4 lg:top-1/3">
+      <div className="absolute left-4 lg:left-5 top-1/3 md:top-1/4 lg:top-1/3">
         <h3 className="text-white font-black text-5xl md:text-6xl lg:text-7xl ">
           {bannerData?.smallText.toUpperCase()}
         </h3>
