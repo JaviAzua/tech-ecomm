@@ -8,7 +8,7 @@ export interface Props {
 
 export default function Layout({ children }: Props) {
   return (
-    <div>
+    <div className="min-h-[100vh] flex flex-col justify-between">
       <Head>
         <title>Tech Ecomm</title>
         <meta

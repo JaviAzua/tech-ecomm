@@ -1,9 +1,8 @@
-import Head from "next/head";
 import HeroBanner from "../components/HeroBanner";
-import MainHeader from "../components/MainHeader";
 import { client } from "../lib/client";
 import { BannerData, Product } from "../types";
 import ProductCard from "../components/ProductCard";
+import FooterBanner from "../components/FooterBanner";
 
 export interface Props {
   products: Product[] | null;
@@ -12,9 +11,9 @@ export interface Props {
 
 export default function Home({ products, bannerData }: Props) {
   return (
-    <div>
+    <div className="px-5">
       <HeroBanner bannerData={bannerData![0]} />
-      <section>
+      <section className="flex flex-col gap-10">
         <div>
           <h2 className="text-center pt-10 font-bold text-4xl">
             Latest Products
@@ -26,6 +25,9 @@ export default function Home({ products, bannerData }: Props) {
               <ProductCard product={product} />
             </div>
           ))}
+        </div>
+        <div>
+          <FooterBanner footerBanner={bannerData![0]} />
         </div>
       </section>
     </div>

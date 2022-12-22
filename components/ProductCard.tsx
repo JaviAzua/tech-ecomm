@@ -14,19 +14,19 @@ export default function ProductCard({
 
   return (
     <Link href={`/product/${slug.current}`}>
-      <div className=" cursor-pointer hover:scale-110 duration-500">
+      <div className=" cursor-pointer hover:scale-110 duration-500 group">
         <div className="bg-white rounded-3xl min-h-[200px] max-h-[200px] min-w-[200px] md:min-h-[230px] md:max-h-[230px] md:min-w-[230px] flex items-center justify-center">
           <Image
             alt=""
             className=" object-cover"
             src={src}
-            width={200}
-            height={200}
+            width={170}
+            height={170}
           />
         </div>
-        <div className="w-2/3">
+        <div className="w-2/3 group-">
           <h3 className="font-bold">{name.slice(0, 20)}...</h3>
-          <p className=" mt-2 ">${price}</p>
+          <p className=" mt-2 group-hover:underline">${price}</p>
         </div>
       </div>
     </Link>

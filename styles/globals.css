@@ -21,4 +21,12 @@
   .resizeMini {
     @apply hover:scale-105 transition-all duration-100;
   }
+
+  .footerTitles {
+    @apply flex-col flex gap-5 md:gap-0 py-5 z-10;
+  }
+
+  .footerItem {
+    @apply text-white hover:underline cursor-pointer;
+  }
 }
