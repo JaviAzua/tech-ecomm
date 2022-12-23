@@ -3,6 +3,7 @@ import { client } from "../lib/client";
 import { BannerData, Product } from "../types";
 import ProductCard from "../components/ProductCard";
 import FooterBanner from "../components/FooterBanner";
+import Head from "next/head";
 
 export interface Props {
   products: Product[] | null;

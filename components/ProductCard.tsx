@@ -24,7 +24,7 @@ export default function ProductCard({
             height={170}
           />
         </div>
-        <div className="w-2/3 group-">
+        <div className="w-2/3 ">
           <h3 className="font-bold">{name.slice(0, 20)}...</h3>
           <p className=" mt-2 group-hover:underline">${price}</p>
         </div>

@@ -30,3 +30,9 @@
     @apply text-white hover:underline cursor-pointer;
   }
 }
+
+@layer utilities {
+  .pause {
+    animation-play-state: paused;
+  }
+}
