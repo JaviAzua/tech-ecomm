@@ -10,7 +10,7 @@ function HeroBanner({ bannerData }: Props) {
   const src = urlFor(bannerData?.image[0]).url();
 
   return (
-    <div className="z-[-1] md:z-auto select-none relative group rounded-2xl mx-auto w-11/12 h-[50vh] md:h-[40vh] mt-10 shadow-sm shadow-darkblack">
+    <div className="z-[-1] md:z-auto select-none relative group rounded-2xl mx-auto min-w-11/12 h-[50vh] md:h-[40vh] mt-10 shadow-sm shadow-darkblack">
       <div className="absolute rounded-2xl inset-0 bg-black " />
       <Image
         alt=""

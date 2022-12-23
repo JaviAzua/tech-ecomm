@@ -11,7 +11,7 @@ export interface Props {
 
 export default function Home({ products, bannerData }: Props) {
   return (
-    <div className="px-5">
+    <div className="px-1">
       <HeroBanner bannerData={bannerData![0]} />
       <section className="flex flex-col gap-10">
         <div>
@@ -19,7 +19,7 @@ export default function Home({ products, bannerData }: Props) {
             Latest Products
           </h2>
         </div>
-        <div className="flex flex-wrap justify-center gap-6 mt-4 w-full">
+        <div className="flex flex-wrap justify-center gap-4 md:gap-6 mt-4 w-full">
           {products?.slice(0, 10).map((product) => (
             <div key={product._id}>
               <ProductCard product={product} />
