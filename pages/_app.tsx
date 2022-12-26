@@ -1,5 +1,5 @@
 import Layout from "../components/Layout";
-import { StateContext } from "../context/StateContext";
+import StateContext from "../context/StateContext";
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 
