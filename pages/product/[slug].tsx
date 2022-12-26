@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { client, urlFor } from "../../lib/client";
-import { Product } from "../../types";
+import { ContextTypes, Product } from "../../types";
 import { useState } from "react";
 import {
   AiFillStar,
@@ -10,6 +10,7 @@ import {
 } from "react-icons/ai";
 import Head from "next/head";
 import ProductCard from "../../components/ProductCard";
+import { useStateContext } from "../../context/StateContext";
 
 export interface Props {
   product: Product;
@@ -18,10 +19,9 @@ export interface Props {
 
 export default function ProductDetails({ product, productsAll }: Props) {
   const [imgSelect, setImgSelect] = useState(0);
-  const [qty, setQty] = useState(1);
-
+  const { qty, incQty, decQty, cartItems, onAdd } =
+    useStateContext() as ContextTypes;
   const src = urlFor(product.image && product?.image[imgSelect]).url();
-
   return (
     <div>
       <Head>
@@ -32,7 +32,7 @@ export default function ProductDetails({ product, productsAll }: Props) {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="flex mt-10 gap-5 flex-wrap justify-center p-4">
+      <div className="flex mt-10 gap-5 flex-wrap justify-center p-4 ">
         <div>
           <div className="relative rounded-xl bg-white h-[400px] w-[400px]  md:h-[430px] md:w-[430px] flex items-center justify-center">
             <Image
@@ -79,19 +79,22 @@ export default function ProductDetails({ product, productsAll }: Props) {
           </p>
           <br />
 
-          <div className="flex gap-3 items-center">
+          <div className="flex gap-3 items-center select-none">
             <h3 className="font-semibold">Quantity:</h3>
             <span className="text-3xl md:text-2xl text-lightRed cursor-pointer ">
-              <AiOutlineMinusCircle />
+              <AiOutlineMinusCircle onClick={decQty} />
             </span>
-            <span>1</span>
+            <span>{qty}</span>
             <span className="text-3xl md:text-2xl text-lightRed cursor-pointer">
-              <AiOutlinePlusCircle />
+              <AiOutlinePlusCircle onClick={incQty} />
             </span>
           </div>
           <br />
           <div className="flex flex-wrap gap-4">
-            <button className="py-4 px-6 rounded border border-lightRed text-lightRed hover:scale-110 duration-500">
+            <button
+              onClick={() => onAdd(product, qty)}
+              className="py-4 px-6 rounded border border-lightRed text-lightRed hover:scale-110 duration-500"
+            >
               Add to Cart
             </button>
             <button className="py-4 px-6 rounded bg-lightRed text-white hover:scale-110 duration-500">
@@ -105,9 +108,11 @@ export default function ProductDetails({ product, productsAll }: Props) {
       </h2>
       <div className="min-h-[40vh] flex items-center relative overflow-x-scroll scrollbar-hide">
         <div className="flex gap-6 animate-marquee whitespace-nowrap hover:pause">
-          {productsAll.map((item) => (
-            <ProductCard key={product._id} product={item} />
-          ))}
+          {productsAll
+            .filter((p) => p._id !== product._id)
+            .map((item) => (
+              <ProductCard key={product._id} product={item} />
+            ))}
         </div>
       </div>
     </div>

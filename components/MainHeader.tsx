@@ -12,7 +12,7 @@ export default function MainHeader() {
   };
 
   return (
-    <nav className="flex z-50 select-none items-center justify-evenly py-4 bg-lightRed">
+    <nav className="flex sticky z-50 select-none items-center justify-evenly py-4 bg-lightRed">
       <Link href={"/"}>
         <Image
           className="cursor-pointer resizeMini"
@@ -30,7 +30,7 @@ export default function MainHeader() {
         )}
       </button>
       <ul
-        className={`md:flex md:items-center md:py-0 py-12 md:text-base md:space-y-0 space-y-6 text-lg absolute md:static bg-lightRed md:bg-opacity-0 left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${
+        className={`md:flex text-white md:text-grey md:items-center md:py-0 py-12 md:text-base md:space-y-0 space-y-6 text-lg absolute md:static bg-lightRed md:bg-opacity-0 left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${
           menuOpen ? "top-20 " : "top-[-500px]"
         }`}
       >

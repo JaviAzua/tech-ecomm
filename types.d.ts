@@ -10,6 +10,7 @@ export interface Product {
   price: number;
   slug: Slug;
   type: string;
+  quantity: number;
 }
 
 export interface Slug {
@@ -31,4 +32,14 @@ export interface BannerData {
   midText: string;
   product: string;
   smallText: string;
+}
+
+export interface ContextTypes {
+  cartItems: Product[];
+  totalPrice: number | null;
+  totalQuantities: number | null;
+  qty: number;
+  incQty: () => void;
+  decQty: () => void;
+  onAdd: (product: Product, quantity: number) => void;
 }
