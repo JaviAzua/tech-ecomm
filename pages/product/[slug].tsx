@@ -19,9 +19,10 @@ export interface Props {
 
 export default function ProductDetails({ product, productsAll }: Props) {
   const [imgSelect, setImgSelect] = useState(0);
-  const { qty, incQty, decQty, cartItems, onAdd } =
+  const { qty, incQty, decQty, cartItems, onAdd, onRemove } =
     useStateContext() as ContextTypes;
-  const src = urlFor(product.image && product?.image[imgSelect]).url();
+
+  const src = urlFor(product.image && product?.image[imgSelect])?.url();
   return (
     <div>
       <Head>

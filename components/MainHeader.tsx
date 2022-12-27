@@ -3,9 +3,14 @@ import Link from "next/link";
 import { VscMenu, VscChromeClose } from "react-icons/vsc";
 import { IoBagHandleSharp } from "react-icons/io5";
 import { useState } from "react";
+import { useStateContext } from "../context/StateContext";
+import { ContextTypes } from "../types";
+import Cart from "./Cart";
 
 export default function MainHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { cartOpen, setCartOpen, totalQuantities } =
+    useStateContext() as ContextTypes;
 
   const handleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -34,17 +39,33 @@ export default function MainHeader() {
           menuOpen ? "top-20 " : "top-[-500px]"
         }`}
       >
-        <li className="navItem">Home</li>
-        <li className="navItem">Headphones</li>
-        <li className="navItem">Notebooks</li>
-        <li className="navItem">Components</li>
-        <li className="navItem">Accessories</li>
-        <li className="navItem">Tablets</li>
+        <li onClick={handleMenu} className="navItem">
+          Home
+        </li>
+        <li onClick={handleMenu} className="navItem">
+          Headphones
+        </li>
+        <li onClick={handleMenu} className="navItem">
+          Notebooks
+        </li>
+        <li onClick={handleMenu} className="navItem">
+          Components
+        </li>
+        <li onClick={handleMenu} className="navItem">
+          Accessories
+        </li>
+        <li onClick={handleMenu} className="navItem">
+          Tablets
+        </li>
       </ul>
-      <button className="flex relative group">
+      {cartOpen && <Cart />}
+      <button
+        onClick={() => setCartOpen(!cartOpen)}
+        className="flex relative group"
+      >
         <IoBagHandleSharp className="group-hover:scale-105 transition-all duration-100 w-10 h-10 bg-white rounded-full" />
         <span className="absolute group-hover:scale-105 transition-all duration-100 bottom-0 right-0 bg-lightRed rounded-full w-6 h-6 flex items-center justify-center">
-          2
+          {totalQuantities}
         </span>
       </button>
     </nav>

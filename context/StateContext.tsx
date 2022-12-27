@@ -17,6 +17,7 @@ const StateContext = ({ children }: Props) => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalQuantities, setTotalQuantities] = useState(0);
   const [qty, setQty] = useState(1);
+  const [cartOpen, setCartOpen] = useState(false);
 
   const onAdd = (product: Product, quantity: number) => {
     const checkProductInCart = cartItems?.find(
@@ -44,6 +45,24 @@ const StateContext = ({ children }: Props) => {
 
       setCartItems([...cartItems, { ...product }]);
     }
+
+    setQty(1);
+  };
+
+  const onRemove = (product: Product) => {
+    const foundProduct = cartItems.find((item) => item._id === product?._id);
+    const newCartItems = cartItems.filter((item) => item._id !== product?._id);
+
+    setTotalPrice(
+      (prevTotalPrice) =>
+        prevTotalPrice - foundProduct?.price! * foundProduct?.quantity!
+    );
+
+    setTotalQuantities(
+      (prevTotalQuantities) => prevTotalQuantities - foundProduct?.quantity!
+    );
+
+    setCartItems(newCartItems);
   };
 
   const incQty = () => {
@@ -60,6 +79,7 @@ const StateContext = ({ children }: Props) => {
   return (
     <CartContext.Provider
       value={{
+        cartOpen,
         qty,
         incQty,
         decQty,
@@ -67,6 +87,8 @@ const StateContext = ({ children }: Props) => {
         totalQuantities,
         cartItems,
         onAdd,
+        onRemove,
+        setCartOpen,
       }}
     >
       {children}

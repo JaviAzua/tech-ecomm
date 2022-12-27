@@ -42,4 +42,7 @@ export interface ContextTypes {
   incQty: () => void;
   decQty: () => void;
   onAdd: (product: Product, quantity: number) => void;
+  onRemove: (product: Product) => void;
+  cartOpen: boolean;
+  setCartOpen: (value: boolean) => void;
 }
