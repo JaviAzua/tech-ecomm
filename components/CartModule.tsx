@@ -9,27 +9,34 @@ export interface Props {
 }
 
 export default function CartModule({ product }: Props) {
-  const src = urlFor(product?.image && product?.image[0])?.url();
+  const src = urlFor(product?.image ? product?.image[0] : "").url();
   const { totalPrice, onRemove } = useStateContext() as ContextTypes;
 
   return (
-    <div>
-      <div className="grid grid-cols-5 items-center w-[35vw] p-2 place-content-evenly">
-        <div className="w-[20px] h-[20px] bg-white flex justify-center items-center object-scale-down rounded">
-          <Image alt="" src={src} width={15} height={15} />
+    <div className="py-2">
+      <div className="grid grid-cols-4 md:grid-cols-5">
+        <div className="w-[60px] h-[60px] md:w-[45px] place-self-center md:h-[45px] flex items-center justify-center bg-white rounded object-cover">
+          <Image alt="" className=" " src={src} width={40} height={40} />
         </div>
 
-        <p className="hidden md:block">{product.name.slice(0, 10)}...</p>
+        <p className="hidden md:flex md:items-center place-self-center">
+          {product.name.slice(0, 10)}...
+        </p>
 
-        <p>x{product.quantity}</p>
+        <p className="text-xs font-semibold flex items-center place-self-center">
+          (x{product.quantity})
+        </p>
 
-        <p>${product.price * product.quantity}</p>
+        <p className="font-bold flex justify-center items-center">
+          $
+          <span className="underline ">{product.price * product.quantity}</span>
+        </p>
 
         <button
           onClick={() => onRemove(product)}
-          className=" place-self-center bg-lightRed rounded w-1/3"
+          className=" place-self-center bg-lightRed px-3 py-1 rounded text-white font-bold flex justify-center items-center"
         >
-          X
+          x
         </button>
       </div>
     </div>
