@@ -6,14 +6,49 @@ import { useState } from "react";
 import { useStateContext } from "../context/StateContext";
 import { ContextTypes } from "../types";
 import Cart from "./Cart";
+import toast from "react-hot-toast";
+
+const navBariL = [
+  {
+    title: "Headphones",
+    type: "headphone",
+  },
+  {
+    title: "Notebooks",
+    type: "notebook",
+  },
+  {
+    title: "Components",
+    type: "component",
+  },
+  {
+    title: "Accessories",
+    type: "accessory",
+  },
+  {
+    title: "Tablets",
+    type: "tablet",
+  },
+];
 
 export default function MainHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { cartOpen, setCartOpen, totalQuantities } =
+  const { cartOpen, setCartOpen, cartItems, totalQuantities } =
     useStateContext() as ContextTypes;
 
   const handleMenu = () => {
     setMenuOpen(!menuOpen);
+  };
+
+  const handleCart = () => {
+    if (cartItems.length === 0) {
+      toast("No cart items", {
+        duration: 1500,
+        icon: "⛔",
+      });
+    } else {
+      setCartOpen(!cartOpen);
+    }
   };
 
   return (
@@ -39,35 +74,26 @@ export default function MainHeader() {
           menuOpen ? "top-20 " : "top-[-500px]"
         }`}
       >
-        <li onClick={handleMenu} className="navItem">
-          Home
-        </li>
-        <li onClick={handleMenu} className="navItem">
-          Headphones
-        </li>
-        <li onClick={handleMenu} className="navItem">
-          Notebooks
-        </li>
-        <li onClick={handleMenu} className="navItem">
-          Components
-        </li>
-        <li onClick={handleMenu} className="navItem">
-          Accessories
-        </li>
-        <li onClick={handleMenu} className="navItem">
-          Tablets
-        </li>
+        <Link href={"/"}>
+          <li onClick={handleMenu} className="navItem">
+            Home
+          </li>
+        </Link>
+        {navBariL.map((navbarItem) => (
+          <Link key={navbarItem.type} href={`/category/${navbarItem.type}`}>
+            <li className="navItem">{navbarItem.title}</li>
+          </Link>
+        ))}
       </ul>
       {cartOpen && <Cart />}
-      <button
-        onClick={() => setCartOpen(!cartOpen)}
-        className="flex relative group"
-      >
+      <button onClick={handleCart} className="flex relative group">
         <IoBagHandleSharp className="group-hover:scale-105 transition-all duration-100 w-10 h-10 bg-white rounded-full" />
-        {totalQuantities! >= 1 && (
-          <span className="absolute group-hover:scale-105 transition-all duration-100 bottom-0 right-0 bg-[#ffec1f] rounded-full w-4 h-4 flex items-center justify-center text-xs ">
+        {totalQuantities! >= 1 ? (
+          <div className="absolute group-hover:scale-105 transition-all duration-100 bottom-0 right-0 bg-[#ffec1f] rounded-full w-4 h-4 flex items-center justify-center text-xs ">
             {totalQuantities}
-          </span>
+          </div>
+        ) : (
+          ""
         )}
       </button>
     </nav>

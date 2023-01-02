@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { BannerData } from "../types";
 import { urlFor } from "../lib/client";
+import Link from "next/link";
 
 export interface Props {
   footerBanner: BannerData;
@@ -21,9 +22,11 @@ export default function FooterBanner({ footerBanner }: Props) {
         <p className="z-10 md:z-auto text-white text-4xl font-black">
           {footerBanner.discount}% OFF
         </p>
-        <button className="bg-lightgrey font-medium text-lg absolute bottom-5 right-2 lg:right-8 p-6 px-12 rounded md:px-36 md:py-8 hover:bg-white duration-500 z-10">
-          {footerBanner.buttonText}
-        </button>
+        <Link href={"/category/component"}>
+          <button className="bg-lightgrey font-medium text-lg absolute bottom-5 right-2 lg:right-8 p-6 px-12 rounded md:px-36 md:py-8 hover:bg-white duration-500 z-10">
+            {footerBanner.buttonText}
+          </button>
+        </Link>
         <Image
           src={src}
           alt=""

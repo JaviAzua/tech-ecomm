@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { BannerData } from "../types";
 import { urlFor } from "../lib/client";
+import Link from "next/link";
 
 export interface Props {
   bannerData: BannerData | null;
@@ -32,10 +33,11 @@ function HeroBanner({ bannerData }: Props) {
         <h3 className="text-white font-black text-5xl md:text-6xl lg:text-7xl ">
           {bannerData?.smallText.toUpperCase()}
         </h3>
-
-        <button className="text-white cursor-pointer relative font-semibold py-8 px-20 md:py-6 lg:py-6 md:px-32 lg:px-44  bg-lightRed  duration-700 md:opacity-80 md:hover:opacity-100 ">
-          {bannerData?.buttonText}
-        </button>
+        <Link href={"/category/component"}>
+          <button className="text-white cursor-pointer relative font-semibold py-8 px-20 md:py-6 lg:py-6 md:px-32 lg:px-44  bg-lightRed  duration-700 md:opacity-80 md:hover:opacity-100 ">
+            {bannerData?.buttonText}
+          </button>
+        </Link>
       </div>
     </div>
   );

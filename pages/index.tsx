@@ -16,7 +16,7 @@ export default function Home({ products, bannerData }: Props) {
       <section className="flex flex-col gap-10">
         <div>
           <h2 className="text-center pt-10 font-bold text-4xl">
-            Latest Products
+            Recomendations
           </h2>
         </div>
         <div className="flex flex-wrap justify-center gap-4 md:gap-6 mt-4 w-full">

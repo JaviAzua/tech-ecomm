@@ -9,8 +9,8 @@ export interface Props {
 }
 
 export default function CartModule({ product }: Props) {
-  const src = urlFor(product?.image ? product?.image[0] : "").url();
-  const { totalPrice, onRemove } = useStateContext() as ContextTypes;
+  const src = urlFor(product?.image && product?.image[0]).url();
+  const { onRemove } = useStateContext() as ContextTypes;
 
   return (
     <div className="py-2">

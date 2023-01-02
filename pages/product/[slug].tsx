@@ -19,10 +19,18 @@ export interface Props {
 
 export default function ProductDetails({ product, productsAll }: Props) {
   const [imgSelect, setImgSelect] = useState(0);
-  const { qty, incQty, decQty, cartItems, onAdd, onRemove } =
+  const { qty, incQty, decQty, onAdd, setCartOpen } =
     useStateContext() as ContextTypes;
 
+  const productsNoSelected = productsAll.filter((p) => p._id !== product._id);
+
   const src = urlFor(product.image && product?.image[imgSelect])?.url();
+
+  const handleBuy = () => {
+    onAdd(product, qty);
+    setCartOpen(true);
+  };
+
   return (
     <div>
       <Head>
@@ -98,7 +106,11 @@ export default function ProductDetails({ product, productsAll }: Props) {
             >
               Add to Cart
             </button>
-            <button className="py-4 px-6 rounded bg-lightRed text-white hover:scale-110 duration-500">
+
+            <button
+              onClick={handleBuy}
+              className="py-4 px-6 rounded bg-lightRed text-white hover:scale-110 duration-500"
+            >
               Buy Now
             </button>
           </div>
@@ -109,11 +121,9 @@ export default function ProductDetails({ product, productsAll }: Props) {
       </h2>
       <div className="min-h-[40vh] flex items-center relative overflow-x-scroll scrollbar-hide">
         <div className="flex gap-6 animate-marquee whitespace-nowrap hover:pause">
-          {productsAll
-            .filter((p) => p._id !== product._id)
-            .map((item) => (
-              <ProductCard key={product._id} product={item} />
-            ))}
+          {productsNoSelected.map((item) => (
+            <ProductCard key={item._id} product={item} />
+          ))}
         </div>
       </div>
     </div>

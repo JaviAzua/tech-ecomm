@@ -34,10 +34,13 @@ export interface BannerData {
   smallText: string;
 }
 
-export interface ContextTypes {
+export interface Memo {
   cartItems: Product[];
   totalPrice: number | null;
   totalQuantities: number | null;
+}
+
+export interface ContextTypes {
   qty: number;
   incQty: () => void;
   decQty: () => void;
@@ -45,4 +48,7 @@ export interface ContextTypes {
   onRemove: (product: Product) => void;
   cartOpen: boolean;
   setCartOpen: (value: boolean) => void;
+  cartItems: Product[];
+  totalPrice: number | null;
+  totalQuantities: number | null;
 }

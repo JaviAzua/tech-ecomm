@@ -18,9 +18,9 @@ export default function ProductCard({
         <div className="bg-white rounded-3xl min-h-[200px] max-h-[200px] min-w-[200px] md:min-h-[230px] md:max-h-[230px] md:min-w-[230px] flex items-center justify-center">
           <Image
             alt=""
-            className=" object-cover"
+            className=" object-scale"
             src={src}
-            width={170}
+            width={150}
             height={170}
           />
         </div>

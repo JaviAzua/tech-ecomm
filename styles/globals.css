@@ -15,7 +15,7 @@
 
 @layer components {
   .navItem {
-    @apply font-semibold text-xs cursor-pointer hover:text-darkblack duration-500 ml-4 lg:ml-6;
+    @apply font-semibold text-xs cursor-pointer py-4 md:py-0 hover:text-darkblack duration-500 ml-4 lg:ml-6;
   }
 
   .resizeMini {

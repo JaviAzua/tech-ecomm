@@ -1,4 +1,6 @@
-export default {
+import {defineType, defineField} from 'sanity'
+
+export default defineType({
   name: 'product',
   title: 'Product',
   type: 'document',
@@ -12,11 +14,12 @@ export default {
         hotspot: true,
       },
     },
-    {
+    defineField({
       name: 'name',
       title: 'Name',
       type: 'string',
-    },
+      validation: (Rule) => Rule.required().min(5).max(30),
+    }),
     {
       name: 'slug',
       title: 'Slug',
@@ -52,4 +55,4 @@ export default {
       },
     },
   ],
-}
+})
