@@ -81,7 +81,9 @@ export default function MainHeader() {
         </Link>
         {navBariL.map((navbarItem) => (
           <Link key={navbarItem.type} href={`/category/${navbarItem.type}`}>
-            <li className="navItem">{navbarItem.title}</li>
+            <li onClick={handleMenu} className="navItem">
+              {navbarItem.title}
+            </li>
           </Link>
         ))}
       </ul>
