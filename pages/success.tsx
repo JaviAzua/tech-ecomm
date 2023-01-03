@@ -2,6 +2,7 @@ import { BsCartCheckFill } from "react-icons/bs";
 import { useEffect } from "react";
 import { runFireworks } from "../lib/utils";
 import Link from "next/link";
+import Head from "next/head";
 
 export default function Succes() {
   useEffect(() => {
@@ -10,6 +11,14 @@ export default function Succes() {
 
   return (
     <div className="py-10">
+      <Head>
+        <title>Tech Ecomm - Succesfull purchase</title>
+        <meta
+          name="tech_ecommerce"
+          content="tech ecommerce made by Javier Azua in NEXTjs with Tailwind, Ts and Sanity"
+        />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <div className="rounded-xl bg-lightRed min-h-[20vh] w-[80%] mx-auto">
         <div className="flex items-center justify-center gap-2 flex-wrap py-2">
           <div className="bg-white w-12 h-12 rounded-full flex justify-center items-center">
